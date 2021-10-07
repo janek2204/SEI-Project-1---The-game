@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  margin: 0;
+  margin-bottom: 10px;
+  /* background-image: url('/assets/pexels-photo-998641.jpeg');
+  background-position: center;
+  background-size: cover; */
+}
+
+.grid-wrapper {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+  width: 40vw;
+}
+
+.grid div {
+  border: 1px solid lightgrey;
+  flex-grow: 1;
+  height: 15%;
+  width: 10%;
+}
+
+.grid div.cat {
+  background-image: url('/assets/syrengie.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+.player-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 80vw;
+  align-items: flex-end;
+  width: fit-content;
+}
