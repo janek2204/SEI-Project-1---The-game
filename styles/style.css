@@ -5,17 +5,15 @@ body {
   height: 100vh;
   margin: 0;
   margin-bottom: 10px;
-  /* background-image: url('/assets/pexels-photo-998641.jpeg');
+  background-image: url('../assets/lab-background.jpeg');
   background-position: center;
-  background-size: cover; */
+  background-size: cover;
 }
 
 .grid-wrapper {
   height: 60vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  
+  justify-content: space-evenly;
 }
 
 .grid {
@@ -25,13 +23,13 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   height: 100%;
-  width: 40vw;
-}
+  width: 30vw;
+} 
 
 .grid div {
   border: 1px solid lightgrey;
   flex-grow: 1;
-  height: 15%;
+  height: 10%;
   width: 10%;
 }
 
@@ -47,10 +45,26 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+}
 .player-info {
   display: flex;
   flex-direction: column;
-  margin-left: 80vw;
-  align-items: flex-end;
-  width: fit-content;
+  text-transform: uppercase;
+  padding: 50px;
+  font-size: 17pt;
+  line-height: 45pt;
+  background-image: url('../assets/notepaper.png');
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 40pt;
+  color: black;
+
 }

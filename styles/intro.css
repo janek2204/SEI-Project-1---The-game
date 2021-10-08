@@ -1,0 +1,52 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-image: url('../assets/lab-background.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 40pt;
+  color: black;
+  
+}
+.story {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 28%;
+  text-align: center;
+  
+}
+p {
+  font-family: 'Explora', cursive;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 36px;
+  padding: 70px;
+  background-image: url('../assets/notepaper.png');
+  background-position: center;
+  background-size: cover;
+}
+a {
+  text-decoration: none;
+  font-size: 40px;
+  color: black;
+}
+
+
+button {
+  background-image: url('../assets/pill\ button.png');
+  font-family: 'Permanent Marker', cursive;
+  background-position: center;
+  background-size: cover;
+  height: 13vh;
+  border-radius: 45px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
