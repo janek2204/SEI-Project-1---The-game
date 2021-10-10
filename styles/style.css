@@ -33,7 +33,7 @@ body {
   width: 10%;
 }
 
-.grid div.cat {
+.grid div.synergie {
   background-image: url('/assets/syrengie.gif');
   background-repeat: no-repeat;
   background-size: contain;
@@ -51,9 +51,10 @@ body {
   flex-direction: column;
 }
 .player-info {
+  font-family: 'Explora', cursive;
   display: flex;
   flex-direction: column;
-  text-transform: uppercase;
+  
   padding: 50px;
   font-size: 17pt;
   line-height: 45pt;
@@ -67,4 +68,25 @@ h1 {
   font-size: 40pt;
   color: black;
 
+}
+
+.grid div.virus {
+  background-image: url('/assets/virus.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+
+.explosion {
+  background-image: url('../assets/explosion.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.laser {
+  background-image: url('../assets/laser2rotated.gif');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
