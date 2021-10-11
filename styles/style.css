@@ -17,8 +17,12 @@ body {
 }
 
 .grid {
+  border-radius: 30px;
+  background-image: url('../assets/thumb2-blue-science-background-dna-molecule-background-chemistry-background-blue-neon-background-science-texture.jpeg');
+  background-position: center;
+  background-size: cover;
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -54,8 +58,9 @@ body {
   font-family: 'Explora', cursive;
   display: flex;
   flex-direction: column;
-  
-  padding: 50px;
+  text-align: center;
+  padding: 40px;
+  width: 20vw;
   font-size: 17pt;
   line-height: 45pt;
   background-image: url('../assets/notepaper.png');
@@ -86,6 +91,13 @@ h1 {
 
 .laser {
   background-image: url('../assets/laser2rotated.gif');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bomb {
+  background-image: url('../assets/bomb-explode.gif');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
