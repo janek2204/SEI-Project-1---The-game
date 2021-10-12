@@ -24,7 +24,7 @@ let synergineClass = 'synergie'
 
 const virusClass = 'virus'
 
-const virusArray = [2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 16, 17, 22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37]
+let virusArray = [2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 16, 17, 22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37]
 
 function addVirus() {
   for (let i = 0; i < virusArray.length; i++) {
@@ -77,10 +77,13 @@ function handleKeyUp(event) {
 function moveVirus() {
 
   removeVirus()
+
   for (let i = 0; i < virusArray.length; i++) {
     virusArray[i] += 1
   }
   addVirus()
+
+
   if (cells[currentSynergiePosition].classList.contains('virus', 'synergie')) {
     health.innerText = '☠️'
     window.alert(`Sorry, You loose Dr. ${playerName.innerHTML}! Your score is ${score.innerText}!`)
@@ -88,10 +91,13 @@ function moveVirus() {
     synergineClass = ''
     laserClass = ''
     bombClass = ''
+    clearInterval(randomBombs)
+    virusArray = []
   }
   if (removedVirus.length === virusArray.length) {
     window.alert(`Yesss, you win Dr. ${playerName.innerText}! Your score is ${score.innerText}!`)
     clearInterval(moving)
+    clearInterval(randomBombs)
   }
 }
 
@@ -118,6 +124,14 @@ function shoot(event) {
       score.innerText = parseInt(score.innerText) + 10
     }
 
+    // if (cells[currentLaserPosition].classList.contains(bombClass)) {
+    //   cells[currentLaserPosition].classList.remove(bombClass)
+    //   cells[currentLaserPosition].classList.remove(laserClass)
+    //   cells[currentLaserPosition].classList.add(explosionClass)
+    //   setTimeout(() => cells[currentLaserPosition].classList.remove(explosionClass), 100)
+
+    //   score.innerText = parseInt(score.innerText) + 10
+    // }
   }
   if (event.keyCode === 32) {
     laserPosition = setInterval(laserMove, 100)
@@ -125,11 +139,14 @@ function shoot(event) {
 }
 
 
-function bomb(event) {
+function bomb() {
 
-  let bombPosition
+  let bombPosition = 0
   let currentBombmPosition = virusArray[parseInt(Math.random() * virusArray.length)]
 
+  // if (removedVirus.length > 5) {
+  //   movingInterval = 300
+  // }
   function bombMove() {
 
     cells[currentBombmPosition].classList.remove(bombClass)
@@ -152,23 +169,18 @@ function bomb(event) {
         synergineClass = ''
         laserClass = ''
         bombClass = ''
+        clearInterval(randomBombs)
       }
-      
     }
   }
-  if (event.keyCode === 32) {
-    bombPosition = setInterval(bombMove, 100)
-  }
+  bombPosition = setInterval(bombMove, 500)
 }
 
-
+const randomBombs = setInterval(bomb, 1000)
 
 let movingInterval = 500
 
-
 const moving = setInterval(moveVirus, movingInterval)
-
-
 
 document.addEventListener('keyup', handleKeyUp)
 
@@ -176,4 +188,3 @@ createGrid(startingSynrgiePosition)
 
 
 document.addEventListener('keydown', shoot)
-document.addEventListener('keydown', bomb)
