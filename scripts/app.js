@@ -43,7 +43,7 @@ function removeVirus() {
 function createGrid(startingSynrgiePosition) {
   for (let i = 0; i < cellCount; i++) {
     const cell = document.createElement('div')
-    cell.innerText = i
+    // cell.innerText = i
     grid.appendChild(cell)
     cells.push(cell)
   }
@@ -77,12 +77,12 @@ function handleKeyUp(event) {
 function moveVirus() {
 
   removeVirus()
-
+ 
   for (let i = 0; i < virusArray.length; i++) {
     virusArray[i] += 1
   }
-  addVirus()
 
+  addVirus()
 
   if (cells[currentSynergiePosition].classList.contains('virus', 'synergie')) {
     health.innerText = '☠️'
@@ -138,15 +138,12 @@ function shoot(event) {
   }
 }
 
-
 function bomb() {
 
   let bombPosition = 0
   let currentBombmPosition = virusArray[parseInt(Math.random() * virusArray.length)]
-
-  // if (removedVirus.length > 5) {
-  //   movingInterval = 300
-  // }
+  
+  
   function bombMove() {
 
     cells[currentBombmPosition].classList.remove(bombClass)
@@ -173,14 +170,14 @@ function bomb() {
       }
     }
   }
-  bombPosition = setInterval(bombMove, 500)
+  bombPosition = setInterval(bombMove, 250)
 }
 
-const randomBombs = setInterval(bomb, 1000)
+const randomBombs = setInterval(bomb, 1200)
 
 let movingInterval = 500
-
 const moving = setInterval(moveVirus, movingInterval)
+
 
 document.addEventListener('keyup', handleKeyUp)
 
