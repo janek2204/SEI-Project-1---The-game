@@ -33,7 +33,6 @@ function addVirus() {
     }
   }
 }
-
 function removeVirus() {
   for (let i = 0; i < virusArray.length; i++) {
     cells[virusArray[i]].classList.remove(virusClass)
@@ -43,7 +42,7 @@ function removeVirus() {
 function createGrid(startingSynrgiePosition) {
   for (let i = 0; i < cellCount; i++) {
     const cell = document.createElement('div')
-    // cell.innerText = i
+    cell.innerText = i
     grid.appendChild(cell)
     cells.push(cell)
   }
@@ -77,9 +76,25 @@ function handleKeyUp(event) {
 function moveVirus() {
 
   removeVirus()
- 
+
+  let direction = - 1
+  
+  if (virusArray[0] % width === 0) {
+    for (let i = 0; i < virusArray.length; i++) {
+      virusArray[i] += 13
+    }
+    direction = 1
+  }
+
+  // if (virusArray[0]  % width !== 0 ) {
+  //   for (let i = 0; i < virusArray.length; i++) {
+  //     virusArray[i] += 5
+  //     direction = 1
+  //   }
+  // }
+
   for (let i = 0; i < virusArray.length; i++) {
-    virusArray[i] += 1
+    virusArray[i] += direction
   }
 
   addVirus()
@@ -87,7 +102,7 @@ function moveVirus() {
   if (cells[currentSynergiePosition].classList.contains('virus', 'synergie')) {
     health.innerText = '☠️'
     window.alert(`Sorry, You loose Dr. ${playerName.innerHTML}! Your score is ${score.innerText}!`)
-    clearInterval(moving)
+    clearInterval(movingIntervalVirus)
     synergineClass = ''
     laserClass = ''
     bombClass = ''
@@ -96,14 +111,14 @@ function moveVirus() {
   }
   if (removedVirus.length === virusArray.length) {
     window.alert(`Yesss, you win Dr. ${playerName.innerText}! Your score is ${score.innerText}!`)
-    clearInterval(moving)
+    clearInterval(movingIntervalVirus)
     clearInterval(randomBombs)
   }
 }
 
 function shoot(event) {
 
-  let laserPosition
+  let movingLaserInterval
   let currentLaserPosition = currentSynergiePosition
 
   function laserMove() {
@@ -117,24 +132,25 @@ function shoot(event) {
       cells[currentLaserPosition].classList.add(explosionClass)
 
       setTimeout(() => cells[currentLaserPosition].classList.remove(explosionClass), 300)
-      clearInterval(laserPosition)
+      clearInterval(movingLaserInterval)
 
       const removeVirus = virusArray.indexOf(currentLaserPosition)
       removedVirus.push(removeVirus)
       score.innerText = parseInt(score.innerText) + 10
     }
-
-    // if (cells[currentLaserPosition].classList.contains(bombClass)) {
+    // if (cells[currentLaserPosition].classList.contains(bombClass, laserClass)) {
     //   cells[currentLaserPosition].classList.remove(bombClass)
     //   cells[currentLaserPosition].classList.remove(laserClass)
     //   cells[currentLaserPosition].classList.add(explosionClass)
-    //   setTimeout(() => cells[currentLaserPosition].classList.remove(explosionClass), 100)
+    //   const explosion = setTimeout(() => cells[currentLaserPosition].classList.remove(explosionClass), 100)
+    //   clearInterval(explosionClass)
 
     //   score.innerText = parseInt(score.innerText) + 10
     // }
   }
+
   if (event.keyCode === 32) {
-    laserPosition = setInterval(laserMove, 100)
+    movingLaserInterval = setInterval(laserMove, 100)
   }
 }
 
@@ -142,8 +158,7 @@ function bomb() {
 
   let bombPosition = 0
   let currentBombmPosition = virusArray[parseInt(Math.random() * virusArray.length)]
-  
-  
+
   function bombMove() {
 
     cells[currentBombmPosition].classList.remove(bombClass)
@@ -162,21 +177,23 @@ function bomb() {
 
       if (parseInt(health.innerText) <= 0) {
         window.alert(`Sorry, You loose Dr. ${playerName.innerHTML}! Your score is ${score.innerText}!`)
-        clearInterval(moving)
+        clearInterval(movingIntervalVirus)
         synergineClass = ''
         laserClass = ''
         bombClass = ''
         clearInterval(randomBombs)
       }
     }
+
   }
   bombPosition = setInterval(bombMove, 250)
 }
 
+
 const randomBombs = setInterval(bomb, 1200)
 
-let movingInterval = 500
-const moving = setInterval(moveVirus, movingInterval)
+let movingInterval = 800
+const movingIntervalVirus = setInterval(moveVirus, movingInterval)
 
 
 document.addEventListener('keyup', handleKeyUp)

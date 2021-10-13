@@ -22,7 +22,7 @@ body {
   background-position: center;
   background-size: cover;
   align-items: center;
-  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -31,7 +31,7 @@ body {
 } 
 
 .grid div {
-  /* border: 1px solid lightgrey; */
+  border: 1px solid lightgrey;
   flex-grow: 1;
   height: 10%;
   width: 10%;
