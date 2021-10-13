@@ -18,6 +18,8 @@ const explosionClass = 'explosion'
 let laserClass = 'laser'
 let bombClass = 'bomb'
 
+let bombPosition
+
 const startingSynrgiePosition = 94
 let currentSynergiePosition = 94
 let synergineClass = 'synergie'
@@ -78,18 +80,18 @@ function moveVirus() {
   removeVirus()
 
   let direction = - 1
-  
+
   if (virusArray[0] % width === 0) {
     for (let i = 0; i < virusArray.length; i++) {
       virusArray[i] += 13
+      direction = 1
     }
-    direction = 1
   }
 
-  // if (virusArray[0]  % width !== 0 ) {
+  // if (virusArray[0] % width !== 0) {
   //   for (let i = 0; i < virusArray.length; i++) {
-  //     virusArray[i] += 5
-  //     direction = 1
+  //     virusArray[i] -= 7
+  //     direction = -1
   //   }
   // }
 
@@ -121,6 +123,7 @@ function shoot(event) {
   let movingLaserInterval
   let currentLaserPosition = currentSynergiePosition
 
+
   function laserMove() {
     cells[currentLaserPosition].classList.remove(laserClass)
     currentLaserPosition -= width
@@ -138,12 +141,13 @@ function shoot(event) {
       removedVirus.push(removeVirus)
       score.innerText = parseInt(score.innerText) + 10
     }
-    // if (cells[currentLaserPosition].classList.contains(bombClass, laserClass)) {
+
+    // if (cells[currentLaserPosition].classList.contains('bomb', 'laser')) {
     //   cells[currentLaserPosition].classList.remove(bombClass)
     //   cells[currentLaserPosition].classList.remove(laserClass)
     //   cells[currentLaserPosition].classList.add(explosionClass)
-    //   const explosion = setTimeout(() => cells[currentLaserPosition].classList.remove(explosionClass), 100)
-    //   clearInterval(explosionClass)
+    //   setTimeout(() => cells[currentLaserPosition].classList.remove(explosionClass), 100)
+    //   clearInterval(movingLaserInterval)
 
     //   score.innerText = parseInt(score.innerText) + 10
     // }
@@ -156,7 +160,6 @@ function shoot(event) {
 
 function bomb() {
 
-  let bombPosition = 0
   let currentBombmPosition = virusArray[parseInt(Math.random() * virusArray.length)]
 
   function bombMove() {
@@ -171,7 +174,7 @@ function bomb() {
       cells[currentBombmPosition].classList.remove(synergineClass)
       cells[currentBombmPosition].classList.add(explosionClass)
       setTimeout(() => cells[currentSynergiePosition].classList.remove(explosionClass), 100)
-      clearInterval(bombPosition)
+
 
       health.innerText = parseInt(health.innerText) - 1
 
@@ -184,16 +187,14 @@ function bomb() {
         clearInterval(randomBombs)
       }
     }
-
   }
-  bombPosition = setInterval(bombMove, 250)
+  setInterval(bombMove, 500)
 }
 
 
 const randomBombs = setInterval(bomb, 1200)
 
-let movingInterval = 800
-const movingIntervalVirus = setInterval(moveVirus, movingInterval)
+const movingIntervalVirus = setInterval(moveVirus, 1200)
 
 
 document.addEventListener('keyup', handleKeyUp)
