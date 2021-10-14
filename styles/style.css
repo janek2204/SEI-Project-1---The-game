@@ -88,6 +88,13 @@ p {
   cursor: pointer;
 }
 
+.virus2 {
+  background-image: url('/assets/virus2.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+}
 .explosion {
   background-image: url('../assets/explosion.png');
   background-size: cover;
