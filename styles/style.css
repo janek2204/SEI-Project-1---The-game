@@ -16,11 +16,11 @@ body {
 
 .grid {
   border-radius: 30px;
-  background-image: url('../assets/thumb2-blue-science-background-dna-molecule-background-chemistry-background-blue-neon-background-science-texture.jpeg');
+  background-image: url('../assets/game-bakcground.jpeg');
   background-position: center;
   background-size: cover;
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 1);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -1,6 +1,6 @@
 
 const playerInputName = window.prompt('What is your name?')
-
+const audio = document.querySelector('audio')
 
 
 const score = document.querySelector('.score')
@@ -139,6 +139,11 @@ function shoot(event) {
     currentLaserPosition -= width
     cells[currentLaserPosition].classList.add(laserClass)
 
+    function playAudio() {
+      audio.src = './assets/sounds/Fireball-Magic-Attack-A-www.fesliyanstudios.com.mp3'
+      audio.play()
+    }
+
     if (cells[currentLaserPosition].classList.contains(virusClass)) {
       cells[currentLaserPosition].classList.remove(laserClass)
       cells[currentLaserPosition].classList.remove(virusClass)
@@ -148,7 +153,7 @@ function shoot(event) {
       clearInterval(movingLaserInterval)
 
       const removeVirus = virusArray.indexOf(currentLaserPosition)
-
+      playAudio()
       removedVirus.push(removeVirus)
 
       score.innerText = parseInt(score.innerText) + 10
@@ -167,6 +172,8 @@ function shoot(event) {
       removedVirusSecondArray.push(secondRemoveVirus)
 
       score.innerText = parseInt(score.innerText) + 15
+
+      playAudio()
     }
     // almost ready for laser and bomb colision
 
@@ -180,8 +187,13 @@ function shoot(event) {
     //   score.innerText = parseInt(score.innerText) + 10
     // }
   }
+  function playLaserAudio() {
+    audio.src = './assets/sounds/Woosh-B11-www.fesliyanstudios.com.mp3'
+    audio.play()
+  }
   if (event.keyCode === 32) {
     movingLaserInterval = setInterval(laserMove, 100)
+    playLaserAudio()
   }
 }
 
@@ -215,7 +227,6 @@ function bomb() {
         clearInterval(randomBombs)
       }
     }
-
   }
 
   setInterval(bombMove, 500)
@@ -240,7 +251,7 @@ function removeVirus2() {
 function moveSecondWave() {
   removeVirus2()
 
-  let direction =  -1
+  let direction = -1
 
   if (virusArraySecondWave[0] % width === 0) {
     for (let i = 0; i < virusArraySecondWave.length; i++) {
@@ -254,7 +265,7 @@ function moveSecondWave() {
   }
 
   addVirus2()
-  
+
 
   if (cells[currentSynergiePosition].classList.contains('virus2', 'synergie')) {
     health.innerText = '☠️'
