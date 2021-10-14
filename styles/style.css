@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+
 body {
   height: 100vh;
   margin: 0;
@@ -31,7 +29,7 @@ body {
 } 
 
 .grid div {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;

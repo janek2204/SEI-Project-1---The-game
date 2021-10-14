@@ -29,7 +29,7 @@ let synergineClass = 'synergie'
 const virusClass = 'virus'
 const virus2Class = 'virus2'
 
-let virusArray = [2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 16, 17, 22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37]
+const virusArray = [2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 16, 17, 22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37]
 const virusArraySecondWave = [2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 16, 17, 22, 23, 24, 25, 26, 27, 32, 33, 34, 35, 36, 37]
 
 function addVirus() {
@@ -50,7 +50,7 @@ function removeVirus() {
 function createGrid(startingSynrgiePosition) {
   for (let i = 0; i < cellCount; i++) {
     const cell = document.createElement('div')
-    cell.innerText = i
+    // cell.innerText = i
     grid.appendChild(cell)
     cells.push(cell)
   }
@@ -108,8 +108,18 @@ function moveVirus() {
 
   addVirus()
 
+  if (cells[currentSynergiePosition].classList.contains('virus', 'synergie')) {
+    health.innerText = '☠️'
+    window.alert(`Sorry, You loose Dr. ${playerName.innerHTML}! Your score is ${score.innerText}!`)
+    clearInterval(movingIntervalVirusSecondWave)
+    synergineClass = ''
+    laserClass = ''
+    bombClass = ''
+    clearInterval(randomBombs)
+    clearInterval(movingIntervalVirusSecondWave)
+  }
 
-  if (score.innerText >= 220) {
+  if (score.innerText >= 240) {
     clearInterval(movingIntervalVirus)
     moveSecondWave()
     movingIntervalVirusSecondWave = setInterval(moveSecondWave, 500)
@@ -254,7 +264,7 @@ function moveSecondWave() {
     laserClass = ''
     bombClass = ''
     clearInterval(randomBombs)
-    virusArray = []
+    clearInterval(movingIntervalVirusSecondWave)
   }
 
   if (removedVirusSecondArray.length === virusArraySecondWave.length) {
