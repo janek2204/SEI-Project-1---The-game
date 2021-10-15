@@ -119,7 +119,7 @@ function moveVirus() {
     clearInterval(movingIntervalVirusSecondWave)
   }
 
-  if (score.innerText >= 240) {
+  if (virusArray.length === removedVirus.length) {
     clearInterval(movingIntervalVirus)
     moveSecondWave()
     movingIntervalVirusSecondWave = setInterval(moveSecondWave, 500)
@@ -183,24 +183,19 @@ function shoot(event) {
     //   cells[currentLaserPosition].classList.add(explosionClass)
     //   setTimeout(() => cells[currentLaserPosition].classList.remove(explosionClass), 100)
     //   clearInterval(movingLaserInterval)
-
-    //   score.innerText = parseInt(score.innerText) + 10
     // }
+
   }
-  function playLaserAudio() {
-    audio.src = './assets/sounds/Woosh-B11-www.fesliyanstudios.com.mp3'
-    audio.play()
-  }
+
   if (event.keyCode === 32) {
     movingLaserInterval = setInterval(laserMove, 100)
-    playLaserAudio()
   }
 }
 
 //bombs behaviour and drawing on the grid
 function bomb() {
 
-  let currentBombmPosition = virusArray[parseInt(Math.random() * virusArray.length)]
+  let currentBombmPosition = virusArray[parseInt(Math.random() * 10)]
 
   function bombMove() {
 
@@ -209,7 +204,7 @@ function bomb() {
     cells[currentBombmPosition].classList.add(bombClass)
 
 
-    if (cells[currentBombmPosition].classList.contains(synergineClass)) {
+    if (cells[currentBombmPosition].classList.contains(synergineClass, bombClass)) {
       cells[currentBombmPosition].classList.remove(bombClass)
       cells[currentBombmPosition].classList.remove(synergineClass)
       cells[currentBombmPosition].classList.add(explosionClass)
@@ -228,7 +223,6 @@ function bomb() {
       }
     }
   }
-
   setInterval(bombMove, 500)
 }
 
@@ -283,6 +277,7 @@ function moveSecondWave() {
     clearInterval(movingIntervalVirusSecondWave)
     clearInterval(randomBombs)
   }
+
 }
 
 
