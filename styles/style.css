@@ -3,7 +3,7 @@ body {
   height: 100vh;
   margin: 0;
   margin-bottom: 10px;
-  background-image: url('../assets/lab-background.jpeg');
+  background-image: url('./assets/lab-background.jpeg');
   background-position: center;
   background-size: cover;
 }
@@ -16,7 +16,7 @@ body {
 
 .grid {
   border-radius: 30px;
-  background-image: url('../assets/game-bakcground.jpeg');
+  background-image: url('./assets/game-bakcground.jpeg');
   background-position: center;
   background-size: cover;
   align-items: center;
@@ -36,7 +36,7 @@ body {
 }
 
 .grid div.synergie {
-  background-image: url('../assets/syrengie.gif');
+  background-image: url('./assets/syrengie.gif');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -63,7 +63,7 @@ h1 {
   width: 20vw;
   font-size: 17pt;
   line-height: 45pt;
-  background-image: url('../assets/notepaper.png');
+  background-image: url('./assets/notepaper.png');
   background-size: cover;
   background-position: center;
 }
@@ -79,7 +79,7 @@ p {
   animation: story-animation 3s linear forwards ;
 }
 .grid div.virus {
-  background-image: url('../assets/virus.gif');
+  background-image: url('./assets/virus.gif');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -87,27 +87,27 @@ p {
 }
 
 .virus2 {
-  background-image: url('../assets/virus2.gif');
+  background-image: url('./assets/virus2.gif');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 
 }
 .explosion {
-  background-image: url('../assets/explosion.png');
+  background-image: url('./assets/explosion.png');
   background-size: cover;
   background-position: center;
 }
 
 .laser {
-  background-image: url('../assets/laser2rotated.gif');
+  background-image: url('./assets/laser2rotated.gif');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .bomb {
-  background-image: url('../assets/bomb-explode.gif');
+  background-image: url('./assets/bomb-explode.gif');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
